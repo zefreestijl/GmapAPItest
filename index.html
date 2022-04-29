@@ -12,22 +12,57 @@
         
     </head>
 
-    <body>
+        <body>
         <h1  id="h1" class="dataInfo1" >Data1</h1>
         <h1  id="h2" class="dataInfo1" >Data2</h1>
-        <button id="b5" class="button1">Batch Capture</button>
+        <button id="b5" style="background: #ecc6c6; font-weight: bold;" class="button1">Batch Capture</button>
 
         <button id="b3" style="Top: 100px; " class="button1">Show Circle</button>
         <button id="b4" style="Top: 130px; " class="button1">Show Region</button>
-    
+
+        <button id="b6" style="Top: 280px; " class="button1">Show Distance</button>
+        <button id="b7" style="Top: 310px; " class="button1">Delete Distance</button>
+
         <input class="form1" style="top: 160px; " id="f1" type="number" min="13" max="17" value="13" > 
         <input class="form1"  style="top: 200px; z-index: 1;" id="f2" value="1 1" type="text"  > 
-        <button id="b1" style="Top: 202px; width: 40px; left: 70px;"  class="button1">Run </button>
+        <button id="b1" style="Top: 202px; width: 50px; left: 80px; background: #ecc6c6; font-weight: bold;"   class="button1">Run </button>
 
-        <p class="form1" id="p1" style="left: 75px; top: 145px; font-size: 17px; width: 100px;" > 1x1 </p>
+        <p class="form1" id="p1" style="left: 85px; top: 145px; font-size: 17px; width: 100px;" > 1x1 </p>
         <div id = 'd2'>
             <p class="form1" id="p2"  style="left: 10px; top: 220px; font-size: 15px; width: 200px;" > 1 1 </p>
         </div>
+
+
+        <button id="z0" style=" left: 1185px; " class="button2">o</button>
+        <button id="z1" style=" left: 1160px; " class="button2"> + </button>
+        <button id="z2" style=" left: 1135px; " class="button2"> - </button>
+
+        <button id="btnWater1" style="Top: 390px; " class="button1a">Water</button>
+
+        <button id="btnPOI1" style="Top: 430px; font-size: 11px; height: 23px;" class="button1a">PointOfInterest</button>
+        <label id="poi1" class="form1" style="top: 460px; width: 130px; color: #4d9900;"> <input type="checkbox" checked="true">attraction</label>
+        <label id="poi2" class="form1" style="top: 480px; width: 130px; color: #2d862d;"> <input type="checkbox" checked="true">park</label>
+        <label id="poi3" class="form1" style="top: 500px; width: 130px; color: #c3c3aa;"> <input type="checkbox" checked="true">business</label>
+        <label id="poi4" class="form1" style="top: 520px; width: 130px; color: #ff6666;"> <input type="checkbox" checked="true">government</label>
+        <label id="poi5" class="form1" style="top: 540px; width: 130px; color: #ff66a3;"> <input type="checkbox" checked="true">medical</label>
+        <label id="poi6" class="form1" style="top: 560px; width: 130px; color: #e6ac00;"> <input type="checkbox" checked="true">place_of_worship</label>
+        <label id="poi7" class="form1" style="top: 580px; width: 130px; color: #b566ff;"> <input type="checkbox" checked="true">school</label>
+        <label id="poi8" class="form1" style="top: 600px; width: 130px; color: #ffb566;"> <input type="checkbox" checked="true">sports_complex</label>
+        
+
+
+        <button id="btnBlocks1" style="Top: 640px; " class="button1a">Blocks</button>
+
+        <button id="btnStreet1" style="Top: 680px;  " class="button1a">Street</button>
+        <label id="street1" class="form1" style="top: 705px; "> <input type="checkbox" checked="true">1 </label>
+        <label id="street2" class="form1" style="top: 705px; left: 55px; "> <input type="checkbox" checked="true">2 </label>
+        <label id="street3" class="form1" style="top: 705px; left: 100px; "> <input type="checkbox" checked="true">3 </label>
+
+        <button id="btnTransit1" style="Top: 740px; font-weight: bold;" class="button1a">Transit</button>
+
+        <button id="btnLandscape1" style="Top: 770px; " class="button1a">Landscape</button>
+        <button id="btnBuilding1" style="Top: 800px; " class="button1a">Building</button>
+
 
 
         <div id="map1"></div>
@@ -35,7 +70,7 @@
 
         <div id="controls1" class="nicebox1">
             <div>
-                <select id="census-var1">
+                <select id="stylers1">
                     <option value="All">All</option>
                     <option value="Water">Water</option>
                     <option value="PointOfInterest">Point Of Interest</option>
@@ -54,12 +89,12 @@
 
 
         <script defer type="text/javascript" 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9EDFqfAy9Fcq243OXWIeYf1sG-eJGssQ&language=zh-CN">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9EDFqfAy9Fcq243OXWIeYf1sG&language=zh-CN&libraries=geometry">
         </script>
 
         <script type="module" src="./index.js"></script>
 
-        
 
     </body>
+    
 </html>
