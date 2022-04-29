@@ -8,17 +8,276 @@ var b3 = document.getElementById('b3'); var b4 = document.getElementById('b4');
 
 var f1 = document.getElementById('f1'); var p1 = document.getElementById('p1');
 var f2 = document.getElementById('f2'); var p2 = document.getElementById('p2'); 
-var b5 = document.getElementById('b5');
+var b5 = document.getElementById('b5'); 
+var b6 = document.getElementById('b6'); var b7 = document.getElementById('b7');
+
+
+var btnStreet1 = document.getElementById('btnStreet1'); 
+btnStreet1.addEventListener('click',  function(e) { { checkStyler(e); } } );
+
+var btnTransit1 = document.getElementById('btnTransit1'); 
+btnTransit1.addEventListener('click',  function(e) { { checkStyler(e); } } );
+
+var btnBlocks1 = document.getElementById('btnBlocks1'); 
+btnBlocks1.addEventListener('click',  function(e) { { checkStyler(e); } } );
+
+var btnWater1 = document.getElementById('btnWater1'); 
+btnWater1.addEventListener('click',  function(e) { { checkStyler(e); } } );
+
+var btnPOI1 = document.getElementById('btnPOI1'); 
+btnPOI1.addEventListener('click',  function(e) { { checkStyler(e); } } );
+
+var btnLandscape1 = document.getElementById('btnLandscape1'); 
+btnLandscape1.addEventListener('click',  function(e) { { checkStyler(e); } } );
+
+var btnBuilding1 = document.getElementById('btnBuilding1'); 
+btnBuilding1.addEventListener('click',  function(e) { { checkStyler(e); } } );
+
+var styleButtonList1 = [ btnStreet1,btnTransit1,btnBlocks1,btnWater1,btnPOI1,btnLandscape1,btnBuilding1 ];
+
+function checkStyler(e)
+{
+
+    for (var i = 0; i< styleButtonList1.length; i++)
+    {    
+        if ( e.target.innerHTML != styleButtonList1[i].innerHTML )
+        { styleButtonList1[i].style.borderStyle = 'outset'; styleButtonList1[i].style.background = '#fff'; }
+        
+    }
+
+   
+    e.target.style.borderStyle = (e.target.style.borderStyle!=='inset' ? 'inset' : 'outset');
+
+
+    if (e.target.style.borderStyle =='inset') 
+    { e.target.style.background = '#777'; c1.value = e.target.innerHTML ; setFeature(); }
+
+    else {  e.target.style.background = '#FFF';  c1.value = 'All'; setFeature(); }
+}
+
+//btnTransit1.addEventListener('click',  function(e) { { checkStyler(e); } } );
 
 
 
 var test11 = document.getElementById("test1");
-var c1 = document.getElementById("census-var1");
+var c1 = document.getElementById("stylers1");
 
 test1.innerHTML = "Viewport Center: / Min: / Max: / ";
 h2.innerHTML = circle1;
 
 //google.maps.event.addDomListener(c1, "change", () => setFeature() );
+
+
+
+
+
+
+// PoI Detail Checked Event
+var poi1 = document.getElementById('poi1'); 
+poi1.addEventListener('click',  function(e) { { checkPOI1(e); } } );
+
+var poi2 = document.getElementById('poi2'); 
+poi2.addEventListener('click',  function(e) { { checkPOI2(e); } } );
+
+var poi3 = document.getElementById('poi3'); 
+poi3.addEventListener('click',  function(e) { { checkPOI3(e); } } );
+
+var poi4 = document.getElementById('poi4'); 
+poi4.addEventListener('click',  function(e) { { checkPOI4(e); } } );
+
+var poi5 = document.getElementById('poi5'); 
+poi5.addEventListener('click',  function(e) { { checkPOI5(e); } } );
+
+var poi6 = document.getElementById('poi6'); 
+poi6.addEventListener('click',  function(e) { { checkPOI6(e); } } );
+
+var poi7 = document.getElementById('poi7'); 
+poi7.addEventListener('click',  function(e) { { checkPOI7(e); } } );
+
+var poi8 = document.getElementById('poi8'); 
+poi8.addEventListener('click',  function(e) { { checkPOI8(e); } } );
+
+
+var poiVis1 = 'on', poiVis2 = 'on', poiVis3 = 'on', poiVis4 = 'on';
+var poiVis5 = 'on', poiVis6 = 'on', poiVis7 = 'on', poiVis8 = 'on';
+
+function resetPOIStyler()
+{
+    if (c1.value == 'PointOfInterest')
+    {
+        mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); 
+        mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1);
+        mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1);
+        mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); 
+        mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1);
+        mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); 
+
+        mapStyle1.push({ 'featureType' : 'poi.attraction', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis1},  {'color' : '#e6ffcc'}] });
+        mapStyle1.push({ 'featureType' : 'poi.park', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis2},  {'color' : '#b3e6b3'}] });
+        mapStyle1.push({ 'featureType' : 'poi.business', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis3},  {'color' : '#e5e5cc'}] });
+        mapStyle1.push({ 'featureType' : 'poi.government', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis4},  {'color' : '#ffcccc'}] });
+        mapStyle1.push({ 'featureType' : 'poi.medical', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis5},  {'color' : '#ffcce0'}] });
+        mapStyle1.push({ 'featureType' : 'poi.place_of_worship', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis6},  {'color' : '#ffecb3'}] });
+        mapStyle1.push({ 'featureType' : 'poi.school', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis7},  {'color' : '#e6ccff'}] });
+        mapStyle1.push({ 'featureType' : 'poi.sports_complex', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis8},  {'color' : '#ffe6cc'}] });
+
+        mapStyle1.push({ 'featureType' : 'poi.attraction', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis1},  {'color' : '#4d9900'}] });
+        mapStyle1.push({ 'featureType' : 'poi.park', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis2},  {'color' : '#2d862d'}] });
+        mapStyle1.push({ 'featureType' : 'poi.business', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis3},  {'color' : '#c3c3aa'} , ] });
+        mapStyle1.push({ 'featureType' : 'poi.government', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis4},  {'color' : '#ff6666'}] });
+        mapStyle1.push({ 'featureType' : 'poi.medical', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis5},  {'color' : '#ff66a3'}] });
+        mapStyle1.push({ 'featureType' : 'poi.place_of_worship', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis6},  {'color' : '#e6ac00'}] });
+        mapStyle1.push({ 'featureType' : 'poi.school', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis7},  {'color' : '#b566ff'}] });
+        mapStyle1.push({ 'featureType' : 'poi.sports_complex', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis8},  {'color' : '#ffb566'}] });
+
+        mapStyle1.push({ 'featureType' : 'poi', 'elementType' : 'labels.text.stroke', 'stylers' : [{'visibility' : 'off'} ] });
+
+
+        map1.setOptions({ styles: mapStyle1 });
+    }
+
+}
+
+function checkPOI1(e)
+{
+    if (e.target.checked == false) { poiVis1 = 'off'; }
+    else if (e.target.checked == true) { poiVis1 = 'on'; }
+    resetPOIStyler();
+}
+
+function checkPOI2(e)
+{
+    if (e.target.checked == false) { poiVis2 = 'off'; }
+    else if (e.target.checked == true) { poiVis2 = 'on'; }
+    resetPOIStyler();
+}
+
+function checkPOI3(e)
+{
+    if (e.target.checked == false) { poiVis3 = 'off'; }
+    else if (e.target.checked == true) { poiVis3 = 'on'; }
+    resetPOIStyler();
+}
+
+function checkPOI4(e)
+{
+    if (e.target.checked == false) { poiVis4 = 'off'; }
+    else if (e.target.checked == true) { poiVis4 = 'on'; }
+    resetPOIStyler();
+}
+
+function checkPOI5(e)
+{
+    if (e.target.checked == false) { poiVis5 = 'off'; }
+    else if (e.target.checked == true) { poiVis5 = 'on'; }
+    resetPOIStyler();
+}
+
+function checkPOI6(e)
+{
+    if (e.target.checked == false) { poiVis6 = 'off'; }
+    else if (e.target.checked == true) { poiVis6 = 'on'; }
+    resetPOIStyler();
+}
+
+function checkPOI7(e)
+{
+    if (e.target.checked == false) { poiVis7 = 'off'; }
+    else if (e.target.checked == true) { poiVis7 = 'on'; }
+    resetPOIStyler();
+}
+
+function checkPOI8(e)
+{
+    if (e.target.checked == false) { poiVis8 = 'off'; }
+    else if (e.target.checked == true) { poiVis8 = 'on'; }
+    resetPOIStyler();
+}
+
+
+// Street Detail Checked Event
+var street1 = document.getElementById('street1');
+var street2 = document.getElementById('street2');
+var street3 = document.getElementById('street3');
+
+
+street1.addEventListener('click',  function(e) { { addStreet1(e); } } );
+street2.addEventListener('click',  function(e) { { addStreet2(e); } } );
+street3.addEventListener('click',  function(e) { { addStreet3(e); } } );
+
+var streetVis1 = 'on', streetVis2 = 'on', streetVis3 = 'on';
+
+function resetStreetStyler()
+{
+    if (c1.value == 'Street')
+    {
+        mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); 
+        mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1);
+        mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1); mapStyle1.splice(mapStyle1.length-1, 1);
+    
+        mapStyle1.push({ 'featureType' : 'road.highway', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : streetVis1} ] });
+        mapStyle1.push({ 'featureType' : 'road.highway', 'elementType' : 'geometry.stroke', 'stylers' : [{'visibility' : streetVis1},  {'color' : '#666666'}] });
+        mapStyle1.push({ 'featureType' : 'road.highway', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : streetVis1},  {'color' : '#e6e6e6'}] });
+        mapStyle1.push({ 'featureType' : 'road.arterial', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : streetVis2} ] });
+        mapStyle1.push({ 'featureType' : 'road.arterial', 'elementType' : 'geometry.stroke', 'stylers' : [{'visibility' : streetVis2},  {'color' : '#666666'}] });
+        mapStyle1.push({ 'featureType' : 'road.arterial', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : streetVis2},  {'color' : '#b3b3b3'}] });
+        mapStyle1.push({ 'featureType' : 'road.local', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : streetVis3} ] });
+        mapStyle1.push({ 'featureType' : 'road.local', 'elementType' : 'geometry.stroke', 'stylers' : [{'visibility' : streetVis3},  {'color' : '#666666'}] });
+        mapStyle1.push({ 'featureType' : 'road.local', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : streetVis3},  {'color' : '#d9d9d9'}] });
+
+        map1.setOptions({ styles: mapStyle1 });
+    }
+
+
+}
+
+function addStreet1(e)
+{
+    if (e.target.checked == false) { streetVis1 = 'off'; }
+
+    else if (e.target.checked == true) { streetVis1 = 'on'; }
+
+    resetStreetStyler()
+}
+
+function addStreet2(e)
+{
+    if (e.target.checked == false) { streetVis2 = 'off'; }
+
+    else if (e.target.checked == true) { streetVis2 = 'on'; }
+
+    resetStreetStyler()
+}
+
+function addStreet3(e)
+{
+    if (e.target.checked == false) { streetVis3 = 'off'; }
+
+    else if (e.target.checked == true) { streetVis3 = 'on'; }
+
+    resetStreetStyler()
+}
+
+
+
+
+
+// ZoomAll / In / Out Event
+var z0 = document.getElementById('z0'); var z1 = document.getElementById('z1');
+var z2 = document.getElementById('z2');
+
+z0.addEventListener('click', zoomAll );
+z1.addEventListener('click', zoomIn ); z2.addEventListener('click', zoomOut );
+
+function zoomAll()
+{
+    if (!rect1) { drawRectangle(); }
+
+    map1.setZoom(10); map1.setCenter(rect1.getBounds().getCenter());
+}
+
+function zoomIn() { map1.setZoom(Number(map1.getZoom())+1 );  }
+function zoomOut() { map1.setZoom(Number(map1.getZoom())-1 );  }
 
 // 00-0. Simulate Keydown Events
 document.addEventListener('keydown', function(e) { { pressZoom(e); } });
@@ -43,12 +302,12 @@ function pressZoom(e)
 }
 
 
-
+var mapStyle1 = new Array();
 
 //
 function setFeature()
 {
-    var mapStyle1 = new Array();
+    mapStyle1 = new Array();
 
     getMapData();
     
@@ -70,6 +329,7 @@ function setFeature()
         mapStyle1.push({ 'featureType' : 'landscape.man_made', 'elementType' : 'labels.text.stroke', 'stylers' : [{'visibility' : 'off'} ] });
         mapStyle1.push({ 'featureType' : 'transit', 'elementType' : 'geometry', 'stylers' : [{'visibility' : 'off'},   ] });
 
+        map1.setMapTypeId('roadmap');
     }
 
     else if (c1.value != "All") 
@@ -107,14 +367,21 @@ function setFeature()
     }
 
     else if (c1.value == "Street")
-    {            
-        mapStyle1.push({ 'featureType' : 'road', 'elementType' : 'geometry.stroke', 'stylers' : [{'visibility' : 'on'},  {'color' : '#666666'}] });
-        mapStyle1.push({ 'featureType' : 'road.arterial', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#b3b3b3'}] });
-        mapStyle1.push({ 'featureType' : 'road.highway', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#e6e6e6'}] });
-        mapStyle1.push({ 'featureType' : 'road.local', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#d9d9d9'}] });
-        mapStyle1.push({ 'featureType' : 'road', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : 'on'}] });
+    {   
+        mapStyle1.push( { 'featureType' : 'landscape.man_made', 'elementType' : 'geometry', 'stylers' : [{'visibility' : 'off'}, {'color' : '#fcfcfc'}] });  
 
-        mapStyle1.push( { 'featureType' : 'landscape.man_made', 'elementType' : 'geometry', 'stylers' : [{'visibility' : 'off'}, {'color' : '#fcfcfc'}] });
+        mapStyle1.push({ 'featureType' : 'road.highway', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : streetVis1} ] });
+        mapStyle1.push({ 'featureType' : 'road.arterial', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : streetVis2} ] });
+        mapStyle1.push({ 'featureType' : 'road.local', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : streetVis3} ] });
+
+        mapStyle1.push({ 'featureType' : 'road.highway', 'elementType' : 'geometry.stroke', 'stylers' : [{'visibility' : streetVis1},  {'color' : '#666666'}] });
+        mapStyle1.push({ 'featureType' : 'road.arterial', 'elementType' : 'geometry.stroke', 'stylers' : [{'visibility' : streetVis2},  {'color' : '#666666'}] });
+        mapStyle1.push({ 'featureType' : 'road.local', 'elementType' : 'geometry.stroke', 'stylers' : [{'visibility' : streetVis3},  {'color' : '#666666'}] });
+
+        mapStyle1.push({ 'featureType' : 'road.highway', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : streetVis1},  {'color' : '#e6e6e6'}] });
+        mapStyle1.push({ 'featureType' : 'road.arterial', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : streetVis2},  {'color' : '#b3b3b3'}] });
+        mapStyle1.push({ 'featureType' : 'road.local', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : streetVis3},  {'color' : '#d9d9d9'}] });
+
 
         map1.setMapTypeId('roadmap');
     }
@@ -137,39 +404,34 @@ function setFeature()
     else if (c1.value == "PointOfInterest")
     {
         mapStyle1.push({ 'featureType' : 'poi', 'elementType' : 'geometry.stroke', 'stylers' : [{'visibility' : 'on'},  {'color' : '#666666'}] });
-        mapStyle1.push({ 'featureType' : 'poi.attraction', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#e6ffcc'}] });
-        mapStyle1.push({ 'featureType' : 'poi.park', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#b3e6b3'}] });
-
         mapStyle1.push({ 'featureType' : 'landscape', 'elementType' : 'geometry.stroke', 'stylers' : [{'visibility' : 'on'},  {'color' : '#666666'}] });
 
-        mapStyle1.push({ 'featureType' : 'poi.business', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#e5e5cc'}] });
-        mapStyle1.push({ 'featureType' : 'poi.government', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#ffcccc'}] });
-        mapStyle1.push({ 'featureType' : 'poi.medical', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#ffcce0'}] });
-        mapStyle1.push({ 'featureType' : 'poi.place_of_worship', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#ffecb3'}] });
-        mapStyle1.push({ 'featureType' : 'poi.school', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#e6ccff'}] });
-        mapStyle1.push({ 'featureType' : 'poi.sports_complex', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#ffe6cc'}] });
-
-        mapStyle1.push({ 'featureType' : 'poi.attraction', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : 'on'},  {'color' : '#4d9900'}] });
-        mapStyle1.push({ 'featureType' : 'poi.park', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : 'on'},  {'color' : '#2d862d'}] });
-
-        mapStyle1.push({ 'featureType' : 'poi.business', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : 'on'},  {'color' : '#c3c3aa'} , ] });
-        mapStyle1.push({ 'featureType' : 'poi.government', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : 'on'},  {'color' : '#ff6666'}] });
-        mapStyle1.push({ 'featureType' : 'poi.medical', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : 'on'},  {'color' : '#ff66a3'}] });
-        mapStyle1.push({ 'featureType' : 'poi.place_of_worship', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : 'on'},  {'color' : '#e6ac00'}] });
-        mapStyle1.push({ 'featureType' : 'poi.school', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : 'on'},  {'color' : '#b566ff'}] });
-        mapStyle1.push({ 'featureType' : 'poi.sports_complex', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : 'on'},  {'color' : '#ffb566'}] });
-
-        mapStyle1.push({ 'featureType' : 'poi', 'elementType' : 'labels.text.stroke', 'stylers' : [{'visibility' : 'off'} ] });
         mapStyle1.push({ 'featureType' : 'landscape.man_made', 'elementType' : 'labels', 'stylers' : [{'visibility' : 'on'},  {'color' : '#cccccc'}] });
         mapStyle1.push({ 'featureType' : 'landscape.man_made', 'elementType' : 'labels.text.stroke', 'stylers' : [{'visibility' : 'off'} ] });
 
-        //mapStyle1.push({ 'featureType' : 'poi', 'elementType' : 'labels', 'stylers' : [{'visibility' : 'on'}] });
-        mapStyle1.push({ 'featureType' : 'poi', 'elementType' : 'labels.icon', 'stylers' : [{'visibility' : 'on'},  {'lightness':99} ] });
-        /*
-        mapStyle1.push({ 'featureType' : 'poi', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : 'on'}, {'lightness':60 }  ] });
-        mapStyle1.push({ 'featureType' : 'poi', 'elementType' : 'labels.text.stroke', 'stylers' : [{'visibility' : 'off'} ] });
-        */
         mapStyle1.push({ 'featureType' : 'road', 'elementType' : 'geometry', 'stylers' : [{'visibility' : 'on'},  {'color' : '#f2f2f2'}] });
+        mapStyle1.push({ 'featureType' : 'poi', 'elementType' : 'labels.icon', 'stylers' : [{'visibility' : 'on'},  {'lightness':99} ] });
+
+
+        mapStyle1.push({ 'featureType' : 'poi.attraction', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis1},  {'color' : '#e6ffcc'}] });
+        mapStyle1.push({ 'featureType' : 'poi.park', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis2},  {'color' : '#b3e6b3'}] });
+        mapStyle1.push({ 'featureType' : 'poi.business', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis3},  {'color' : '#e5e5cc'}] });
+        mapStyle1.push({ 'featureType' : 'poi.government', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis4},  {'color' : '#ffcccc'}] });
+        mapStyle1.push({ 'featureType' : 'poi.medical', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis5},  {'color' : '#ffcce0'}] });
+        mapStyle1.push({ 'featureType' : 'poi.place_of_worship', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis6},  {'color' : '#ffecb3'}] });
+        mapStyle1.push({ 'featureType' : 'poi.school', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis7},  {'color' : '#e6ccff'}] });
+        mapStyle1.push({ 'featureType' : 'poi.sports_complex', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : poiVis8},  {'color' : '#ffe6cc'}] });
+
+        mapStyle1.push({ 'featureType' : 'poi.attraction', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis1},  {'color' : '#4d9900'}] });
+        mapStyle1.push({ 'featureType' : 'poi.park', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis2},  {'color' : '#2d862d'}] });
+        mapStyle1.push({ 'featureType' : 'poi.business', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis3},  {'color' : '#c3c3aa'} , ] });
+        mapStyle1.push({ 'featureType' : 'poi.government', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis4},  {'color' : '#ff6666'}] });
+        mapStyle1.push({ 'featureType' : 'poi.medical', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis5},  {'color' : '#ff66a3'}] });
+        mapStyle1.push({ 'featureType' : 'poi.place_of_worship', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis6},  {'color' : '#e6ac00'}] });
+        mapStyle1.push({ 'featureType' : 'poi.school', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis7},  {'color' : '#b566ff'}] });
+        mapStyle1.push({ 'featureType' : 'poi.sports_complex', 'elementType' : 'labels.text', 'stylers' : [{'visibility' : poiVis8},  {'color' : '#ffb566'}] });
+
+        mapStyle1.push({ 'featureType' : 'poi', 'elementType' : 'labels.text.stroke', 'stylers' : [{'visibility' : 'off'} ] });
 
     }
 
@@ -211,12 +473,15 @@ function initMap()
             keyboardShortcuts: false,
 
             // Zoom control
-            zoomControl: true,
+            zoomControl: false,
+            scaleControl: true,
+            disableDefaultUI: true, 
+
             zoomControlOptions: 
-            {
-                style: google.maps.ZoomControlStyle.SMALL,
-                position: google.maps.ControlPosition.RIGHT_TOP
-            },
+            { position: google.maps.ControlPosition.LEFT_BOTTOM, },
+
+            fullscreenControlOptions: 
+            { position: google.maps.ControlPosition.BOTTOM_LEFT, },
             //minZoom: 10 -0.1,
             //maxZoom: 10 +0.1,
 
@@ -236,7 +501,13 @@ function initMap()
     mpp.gMap = map1;
     map1.data.setStyle();
     circleArr1 = [];
-    h1.innerHTML = 'Current Zoom Level: ' + map1.getZoom() + ' ( Approx. 52 km. )';
+    zoom2km = 52;
+    try
+    {
+        var cirRadNew1 = Math.round(circle1.getRadius()/1000*100)/100;
+        h1.innerHTML = 'Current Zoom Level: ' + map1.getZoom() + ' ( Approx. '+ zoom2km + ' km. )' + " / " + "Scope Radius: " + cirRadNew1 + " km.";
+    }
+    catch{}
     
 }
 // 00-1. Get Posistions
@@ -244,20 +515,23 @@ mpp.addEventListener("click", getMapData , false);
 //mpp.addEventListener("doubleclick", drawCircle(e) , false);
 
 var latDist1; var lngDist1;
+var zoom2km; 
 
 function getMapData()
 {
-    test1.innerHTML = "Viewport Center: (" + Math.round(map1.getCenter().lat()*10000)/10000  + ", " +  Math.round(map1.getCenter().lng()*10000)/10000 + ")"
-    + " / Min: (" + Math.round(map1.getBounds().getSouthWest()*10000)/10000  + ", " +  Math.round(map1.getBounds()*10000)/10000 + ")"
-    + " / Max: ("  + Math.round(map1.getBounds().getNorthEast()*10000)/10000  + ", " +  Math.round(map1.getBounds().getNorthEast()*10000)/10000 + ")";
 
-    var zoom2km; 
+    test1.innerHTML = "Viewport Center: (" + Math.round(map1.getCenter().lat()*10000)/10000  + ", " +  Math.round(map1.getCenter().lng()*10000)/10000 + ")"
+    + " / Min: (" + Math.round(map1.getBounds().getSouthWest().lat()*10000)/10000  + ", " +  Math.round(map1.getBounds().getSouthWest().lng()*10000)/10000 + ")"
+    + " / Max: ("  + Math.round(map1.getBounds().getNorthEast().lat()*10000)/10000  + ", " +  Math.round(map1.getBounds().getNorthEast().lng()*10000)/10000 + ")";
+
     if ( map1.getZoom() == 10 ) { zoom2km = 52; }
     else { zoom2km = Math.round( (52 / Math.pow(2, map1.getZoom()-10 ) *1000) ) /1000;  }
 
     try
-    {
-        h1.innerHTML = 'Current Zoom Level: ' + map1.getZoom() + ' ( Approx. ' +zoom2km+ ' km. )';
+    {    
+        var cirRadNew1 = Math.round(circle1.getRadius()/1000*100)/100;
+
+        h1.innerHTML = 'Current Zoom Level: ' + map1.getZoom() + ' ( Approx. ' +zoom2km+ ' km. )' + " / " + "Scope Radius: " + cirRadNew1 + " km.";
     } catch{}
 
     latDist1 = map1.getBounds().getSouthWest().lat() - map1.getCenter().lat();
@@ -296,11 +570,88 @@ function drawCircle(pos1)
 }
 
 map1.addListener("dblclick", (e) => { drawCircle(e.latLng); } );
-//google.maps.event.addListener(map1, 'rightclick', getShapeData);  
+map1.addListener("rightclick", (e) => { drawLine(e); } );
+
+b6.addEventListener('click', showDistance );
+b7.addEventListener('click', removeDistance );
+
 //google.maps.event.addListener(map1, 'rightclick', function(e) { getShapeData(e) } );  
 
 document.addEventListener("mouseup", function(e)  { getShapeData(e); }  , false);
 
+var linePosList2 = [];
+var circle2; var lineList2 = [], distList2 = [];
+
+var distVis1 = true;
+
+function showDistance()
+{
+    if (distVis1 == true)
+    { 
+        for (var i1 =0; i1 < lineList2.length; i1++ )
+        { lineList2[i1].setOptions({ visible: false }); distList2[i1].setOptions({ visible: false }); }
+
+        distVis1 = false; 
+    }
+    else
+    { 
+        for (var i1 =0; i1 < lineList2.length; i1++ )
+        { lineList2[i1].setOptions({ visible: true }); distList2[i1].setOptions({ visible: true }); }
+
+        distVis1 = true; 
+    }
+}
+
+function removeDistance()
+{
+    lineList2[lineList2.length-1].setMap(null);
+    distList2[distList2.length-1].setMap(null);
+
+    lineList2.pop(); distList2.pop();
+
+}
+
+function drawLine(e)
+{
+    if (linePosList2.length<1)
+    {        
+        // Draw Dot & Append Mouse Click Position
+        circle2 = new google.maps.Circle
+        ({ map: map1, radius: Number(zoom2km) *30, fillColor: '#ffffb3', strokeColor: "#993300", center: e.latLng});
+
+        linePosList2.push({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+
+    }
+    else
+    {        
+        // Remove Dot & Draw Line
+        circle2.setMap(null);
+        const lineSymbol = { path: "M 0,-1 0,1", strokeOpacity: 0.8, scale: 2, strokeColor: "#993300"};
+
+        linePosList2.push({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+        
+        var line2 = new google.maps.Polyline({
+            path: linePosList2, strokeOpacity: 0, map: map1, 
+            icons: [ { icon: lineSymbol, offset: "0", repeat: "20px" } ] });
+
+        // Get Distance & Write Text
+        const dist2 = Math.round(google.maps.geometry.spherical.computeLength(line2.getPath().getArray())/10)/100;
+        //console.log('..' + dist2/1000);
+        var center2 = { lat: (linePosList2[1]['lat'] + linePosList2[0]['lat'])/2  , lng: (linePosList2[1]['lng'] + linePosList2[0]['lng'])/2 }
+
+        var marker2 = new google.maps.Marker({
+            position: center2, map: map1, icon: {scale: 0, path: google.maps.SymbolPath.CIRCLE,},
+            label: { color: '#993300', fontWeight: 'bold', text: String(dist2), fontSize: '20px', backgroundColor:'#999999' },
+        });
+
+        lineList2.push(line2);
+        distList2.push(marker2);
+        
+        linePosList2 = [];
+    }
+
+    //console.log(lineList2.length + ' / ' + distList2.length);
+}
 
 function showCircle()
 {
@@ -321,7 +672,7 @@ function getShapeData(e)
     // Get Circle Radius
     var cirRadNew1 = Math.round(circle1.getRadius()/1000*100)/100;
 
-    if (!rect1) { h2.innerHTML = "Scope Radius: " + cirRadNew1 + " km." + " // " + circleArr1.length ; return}
+    if (!rect1) { h2.innerHTML = "--" ; return}
 
     // Get Rectangle Bounds
     var recLat1 = Math.round(rect1.getBounds().getSouthWest().lat()*10000)/10000;
@@ -329,10 +680,11 @@ function getShapeData(e)
     var recLat2 = Math.round(rect1.getBounds().getNorthEast().lat()*10000)/10000;
     var recLng2 = Math.round(rect1.getBounds().getNorthEast().lng()*10000)/10000;
 
+    var recLat0 = Math.round(rect1.getBounds().getCenter().lat()*10000)/10000;
+    var recLng0 = Math.round(rect1.getBounds().getCenter().lng()*10000)/10000;
 
-
-    h2.innerHTML = "Scope Radius: " + cirRadNew1 + " km." + " / Region Min: (" + recLat1 + ", "+ recLng1 +
-    ") / Max:  (" + recLat2 + ", "+ recLng2 + ")";
+    h2.innerHTML = "Region Center:  (" + recLat0 + ", "+ recLng0 + ")"
+    + " / Min: (" + recLat1 + ", "+ recLng1 + ") / Max:  (" + recLat2 + ", "+ recLng2 + ")";
     
     
     if (e) 
@@ -455,7 +807,6 @@ var rectHideTemp;
 function hideMapUI()
 {
     // Hide UI & Shapes
-    map1.setOptions({ disableDefaultUI: true, zoomControl: false  }); 
 
     
     var cc = circleArr1[0];
@@ -480,15 +831,11 @@ function hideMapUI()
     }
 
 
-
-    if (map1.data.map.zoomControl != false)
-    { map1.setOptions({ zoomControl: false}); }
 }
 
 function showMapUI()
 {
     // Show UI & Shapes
-    map1.setOptions({ disableDefaultUI: false, zoomControl: true }); 
 
     if (rectHideTemp == true)
     {
@@ -583,8 +930,6 @@ f2.addEventListener('mouseout', function() { window.clearTimeout(timeoutId); tim
 
 b5.addEventListener('mouseover', function() { timeoutId = window.setTimeout( zoom0index, 1000);} );
 b5.addEventListener('mouseout', function() { window.clearTimeout(timeoutId); timeoutId = null; });
-
-
 
 
 
@@ -748,7 +1093,7 @@ function single2canvas2( tileH = 1, tileV = 1 )
        
    //html2canvas2(); 
    sleep(100);
-   console.log("_s" + tileH + "-" + tileV); 
+   //console.log("_s" + tileH + "-" + tileV); 
 
 }
 
@@ -774,7 +1119,7 @@ function batch2canvas2(map1, tileH = 1, tileV = 1)
  
    html2canvas2(); 
    sleep(500);
-   console.log("_" + tileH + "-" + tileV); 
+   //console.log("_" + tileH + "-" + tileV); 
 
 }
 
