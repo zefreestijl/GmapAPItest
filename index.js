@@ -311,8 +311,10 @@ function setFeature()
 
     getMapData();
     
+    
     if (c1.value == "Blocks" )
     {      
+        
         mapStyle1.push({ 'featureType' : 'road', 'elementType' : 'geometry.fill', 'stylers' : [{'visibility' : 'on'},  {'color' : '#ffffff'}] });
         mapStyle1.push({ 'featureType' : 'road', 'elementType' : 'geometry.stroke', 'stylers' : [{'visibility' : 'on'},  {'color' : '#f2f2f2'}] });
         mapStyle1.push({ 'featureType' : 'water', 'elementType' : 'geometry', 'stylers' : [{'visibility' : 'on'}, {'lightness':60} ] });
@@ -329,6 +331,13 @@ function setFeature()
         mapStyle1.push({ 'featureType' : 'landscape.man_made', 'elementType' : 'labels.text.stroke', 'stylers' : [{'visibility' : 'off'} ] });
         mapStyle1.push({ 'featureType' : 'transit', 'elementType' : 'geometry', 'stylers' : [{'visibility' : 'off'},   ] });
 
+
+        mapStyle1.push({ 'featureType' : 'administrative.country', 'elementType' : 'all', 'stylers' : [{'visibility' : 'on'}, ,{'weight': '3'} ] });
+        mapStyle1.push({ 'featureType' : 'administrative.province', 'elementType' : 'all', 'stylers' : [{'visibility' : 'on'}, ,{'weight': '2'} ] });
+        mapStyle1.push({ 'featureType' : 'administrative.land_parcel', 'elementType' : 'all', 'stylers' : [{'visibility' : 'on'}, ,{'weight': '1'} ] });
+        mapStyle1.push({ 'featureType' : 'administrative.locality', 'elementType' : 'all', 'stylers' : [{'visibility' : 'on'}, ,{'weight': '1'} ] });
+
+        
         map1.setMapTypeId('roadmap');
     }
 
