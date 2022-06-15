@@ -452,6 +452,24 @@ function setFeature()
 c1.addEventListener("change", setFeature, false);
 
 
+f3.addEventListener('change', zoomToValue );
+
+
+function zoomToValue()
+{
+    var s1 = f3.value.split(',')[0].trim();
+    var s2 = f3.value.split(',')[1].trim();
+
+    lat0 = Number(s1); lng0 = Number(s2);
+
+    var centerNew1 = {lat: lat0, lng: lng0};
+
+    map1.setCenter(centerNew1);
+
+
+    console.log(s1 + " / " + s2);
+}
+
 
 var map1;
 var censusMin1 = Number.MAX_VALUE, censusMax1 = -Number.MAX_VALUE;
