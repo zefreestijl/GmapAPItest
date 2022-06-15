@@ -11,6 +11,7 @@ var f2 = document.getElementById('f2'); var p2 = document.getElementById('p2');
 var b5 = document.getElementById('b5'); 
 var b6 = document.getElementById('b6'); var b7 = document.getElementById('b7');
 
+var f3 = document.getElementById('f3'); 
 
 var btnStreet1 = document.getElementById('btnStreet1'); 
 btnStreet1.addEventListener('click',  function(e) { { checkStyler(e); } } );
