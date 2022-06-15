@@ -70,6 +70,24 @@ h2.innerHTML = circle1;
 
 
 
+var c2 = document.getElementById("cityList1");
+c2.addEventListener("change", zoomToCity, false);
+
+
+function zoomToCity()
+{
+
+    var s1 = c2.value.split(',')[0].trim();
+    var s2 = c2.value.split(',')[1].trim();
+
+    lat0 = Number(s1); lng0 = Number(s2);
+
+    var centerNew1 = {lat: lat0, lng: lng0};
+    map1.setCenter(centerNew1);
+    //console.log(s1);
+
+}
+
 
 
 
@@ -460,6 +478,8 @@ function setFeature()
 
 
 c1.addEventListener("change", setFeature, false);
+
+
 
 
 f3.addEventListener('change', zoomToValue );
