@@ -1,118 +1,171 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name = "viewport" content="initial-scale=1.0, user-scalable=no" />
-
-        <title>Add Map</title>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-        <link rel="stylesheet" type="text/css" href="./style.css" />
-        <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-        
-    </head>
-
-        <body>
-        <h1  id="h1" class="dataInfo1" >Data1</h1>
-        <h1  id="h2" class="dataInfo1" >Data2</h1>
-        <button id="b5" style="background: #ecc6c6; font-weight: bold;" class="button1">Batch Capture</button>
-
-        <button id="b3" style="Top: 100px; " class="button1">Show Circle</button>
-        <button id="b4" style="Top: 130px; " class="button1">Show Region</button>
-
-        <button id="b6" style="Top: 280px; " class="button1">Show Distance</button>
-        <button id="b7" style="Top: 310px; " class="button1">Delete Distance</button>
-
-        <input class="form1" style="top: 160px; " id="f1" type="number" min="13" max="17" value="13" > 
-        <input class="form1"  style="top: 200px; z-index: 1;" id="f2" value="1 1" type="text"  > 
-        <button id="b1" style="Top: 202px; width: 50px; left: 80px; background: #ecc6c6; font-weight: bold;"   class="button1">Run </button>
-
-        <p class="form1" id="p1" style="left: 85px; top: 145px; font-size: 17px; width: 100px;" > 1x1 </p>
-        <div id = 'd2'>
-            <p class="form1" id="p2"  style="left: 10px; top: 220px; font-size: 15px; width: 200px;" > 1 1 </p>
-        </div>
-            
-        <input class="form1"  style=" top: 68px; left: 500px; width: 200px; text-align: center; opacity: 0.5;" id="f3" value="32.0584, 118.7965" type="text"  > 
-
-
-        <button id="z0" style=" left: 1185px; " class="button2">o</button>
-        <button id="z1" style=" left: 1160px; " class="button2"> + </button>
-        <button id="z2" style=" left: 1135px; " class="button2"> - </button>
-
-        <button id="btnWater1" style="Top: 390px; " class="button1a">Water</button>
-
-        <button id="btnPOI1" style="Top: 430px; font-size: 11px; height: 23px;" class="button1a">PointOfInterest</button>
-        <label id="poi1" class="form1" style="top: 460px; width: 130px; color: #4d9900;"> <input type="checkbox" checked="true">attraction</label>
-        <label id="poi2" class="form1" style="top: 480px; width: 130px; color: #2d862d;"> <input type="checkbox" checked="true">park</label>
-        <label id="poi3" class="form1" style="top: 500px; width: 130px; color: #c3c3aa;"> <input type="checkbox" checked="true">business</label>
-        <label id="poi4" class="form1" style="top: 520px; width: 130px; color: #ff6666;"> <input type="checkbox" checked="true">government</label>
-        <label id="poi5" class="form1" style="top: 540px; width: 130px; color: #ff66a3;"> <input type="checkbox" checked="true">medical</label>
-        <label id="poi6" class="form1" style="top: 560px; width: 130px; color: #e6ac00;"> <input type="checkbox" checked="true">place_of_worship</label>
-        <label id="poi7" class="form1" style="top: 580px; width: 130px; color: #b566ff;"> <input type="checkbox" checked="true">school</label>
-        <label id="poi8" class="form1" style="top: 600px; width: 130px; color: #ffb566;"> <input type="checkbox" checked="true">sports_complex</label>
-        
-
-
-        <button id="btnBlocks1" style="Top: 640px; " class="button1a">Blocks</button>
-
-        <button id="btnStreet1" style="Top: 680px;  " class="button1a">Street</button>
-        <label id="street1" class="form1" style="top: 705px; "> <input type="checkbox" checked="true">1 </label>
-        <label id="street2" class="form1" style="top: 705px; left: 55px; "> <input type="checkbox" checked="true">2 </label>
-        <label id="street3" class="form1" style="top: 705px; left: 100px; "> <input type="checkbox" checked="true">3 </label>
-
-        <button id="btnTransit1" style="Top: 740px; font-weight: bold;" class="button1a">Transit</button>
-
-        <button id="btnLandscape1" style="Top: 770px; " class="button1a">Landscape</button>
-        <button id="btnBuilding1" style="Top: 800px; " class="button1a">Building</button>
-
-
-
-        <div id="map1"></div>
-        <p style="font-size: 15px; margin-top: 5px;" id="test1"> par1 </p>
-
-        <div id="controls1" class="nicebox1">
-            <div>
-                <select id="stylers1">
-                    <option value="All">All</option>
-                    <option value="Water">Water</option>
-                    <option value="PointOfInterest">Point Of Interest</option>
-                    <option value="Blocks">Blocks</option>
-                        <option disabled></option>
-                    <option value="Street">Street</option>
-                    <option value="Transit">Transit</option>
-                        <option disabled></option>
-                    <option value="Landscape">Landscape</option>
-                    <option value="Building">Building</option>
-
-                </select>
-                
-                <select id="cityList1" style="margin-left: 120px; Width: 100px;">
-                    <option value="24.8953, 121.1372">桃園市</option>
-                    <option value="24.1764, 120.6265">台中市</option>
-                    <option value="24.5036, 120.8227">苗栗縣</option>
-                    <option value="32.0584, 118.7965">南京市</option>
-                    <option value="29.042, 119.62">金华市</option>
-                    <option value="31.2473, 121.412">上海市</option>
-                    <option disabled style="font-weight: bold; text-align: center;">河北省</option>
-                    <option value="4">1</option>
-                    <option value="5">2</option>
-                    <option value="6">3</option>
-                    <option value="7">4</option>
-
-                </select>
-                
-            </div>
-        </div>
-
-
-        <script defer type="text/javascript" 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2fpHA1yVTs890y3E-I4wceDfhMuJj3kY&language=zh-CN&libraries=geometry">
-        </script>
-
-        <script type="module" src="./index.js"></script>
-
-            
-
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Responsive Google Map Dev</title>
     
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        /* Base Layout */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            display: flex;
+            overflow: hidden; /* Important for Miro embeds */
+        }
+
+        /* Sidebar for Controls */
+        #sidebar {
+            width: 280px;
+            height: 100%;
+            background: #f8f9fa;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            box-sizing: border-box;
+            overflow-y: auto; /* Scroll if content is taller than screen */
+            z-index: 10;
+        }
+
+        /* Map Container */
+        #map1 {
+            flex-grow: 1; /* Takes up remaining width */
+            height: 100%;
+        }
+
+        /* UI Elements Styling */
+        h1 { font-size: 18px; margin: 5px 0; color: #333; }
+        .section-label { font-weight: bold; margin-top: 15px; display: block; font-size: 14px; }
+        
+        button {
+            width: 100%;
+            margin: 4px 0;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            transition: background 0.2s;
+        }
+        button:hover { background: #eee; }
+        
+        .btn-highlight { background: #ecc6c6; font-weight: bold; }
+        
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-top: 5px;
+        }
+        
+        label { font-size: 12px; display: flex; align-items: center; gap: 5px; }
+
+        /* Floating Lat/Lng input for top of map */
+        #top-search {
+            position: absolute;
+            top: 10px;
+            left: 300px; /* Offset from sidebar */
+            width: 250px;
+            z-index: 5;
+            opacity: 0.8;
+        }
+
+        /* Mobile / Small Frame Override */
+        @media (max-width: 600px) {
+            #sidebar { width: 150px; padding: 5px; }
+            #sidebar h1 { font-size: 12px; }
+            #top-search { left: 160px; width: 150px; }
+            label { font-size: 10px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="sidebar">
+        <h1 id="h1">Data1</h1>
+        <h1 id="h2">Data2</h1>
+        
+        <button id="b5" class="btn-highlight">Batch Capture</button>
+        <hr style="width:100%">
+
+        <span class="section-label">Shape Controls</span>
+        <button id="b3">Show Circle</button>
+        <button id="b4">Show Region</button>
+        
+        <span class="section-label">Zoom & Grid</span>
+        <input id="f1" type="number" min="13" max="17" value="13">
+        <p id="p1" style="font-size: 13px;">Grid: 1x1</p>
+        
+        <div style="display: flex; gap: 5px;">
+            <input id="f2" value="1 1" type="text" placeholder="Coords">
+            <button id="b1" class="btn-highlight" style="width: 60px;">Run</button>
+        </div>
+        <p id="p2" style="font-size: 12px; color: #666;">Current: 1 1</p>
+
+        <span class="section-label">Measurement</span>
+        <button id="b6">Show Distance</button>
+        <button id="b7">Delete Distance</button>
+
+        <span class="section-label">Layer Visibility</span>
+        <button id="btnWater1">Water</button>
+        <button id="btnPOI1">POI Toggle</button>
+        
+        <div class="checkbox-group">
+            <label style="color: #4d9900;"><input id="poi_cb1" type="checkbox" checked> attraction</label>
+            <label style="color: #2d862d;"><input id="poi_cb2" type="checkbox" checked> park</label>
+            <label style="color: #888;"><input id="poi_cb3" type="checkbox" checked> business</label>
+            <label style="color: #ff6666;"><input id="poi_cb4" type="checkbox" checked> government</label>
+            <label style="color: #ff66a3;"><input id="poi_cb5" type="checkbox" checked> medical</label>
+            <label style="color: #e6ac00;"><input id="poi_cb6" type="checkbox" checked> worship</label>
+            <label style="color: #b566ff;"><input id="poi_cb7" type="checkbox" checked> school</label>
+        </div>
+
+        <button id="btnBlocks1">Blocks</button>
+        <button id="btnStreet1">Street</button>
+        <button id="btnTransit1">Transit</button>
+        <button id="btnLandscape1">Landscape</button>
+        <button id="btnBuilding1">Building</button>
+
+        <span class="section-label">Styler & City</span>
+        <select id="stylers1">
+            <option value="All">All Layers</option>
+            <option value="Water">Water</option>
+            <option value="PointOfInterest">POI</option>
+        </select>
+
+        <select id="cityList1">
+            <option value="24.8953, 121.1372">桃園市</option>
+            <option value="24.1764, 120.6265">台中市</option>
+            <option value="32.0584, 118.7965">南京市</option>
+        </select>
+        
+        <p id="test1" style="font-size: 12px; margin-top: 20px;">System Ready</p>
+    </div>
+
+    <input id="f3" class="form1" id="top-search" style="position: absolute; top: 10px; left: 300px; width: 200px; z-index: 5;" value="32.0584, 118.7965">
+
+    <div id="map1"></div>
+
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&language=zh-CN&libraries=geometry"></script>
+
+    <script type="module" src="./index.js"></script>
+
+</body>
 </html>
