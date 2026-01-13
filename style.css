@@ -1,5 +1,12 @@
 /* Id */
-div#map1 { width: 1200px; height: 800px;  border: 1px solid #000; overflow: hidden; }
+/* div#map1 { width: 1200px; height: 800px;  border: 1px solid #000; overflow: hidden; } */
+div#map1 { 
+    width: 100%;           /* Fills the width of the parent container */
+    height: 100vh;         /* Fills 100% of the viewport height */
+    border: 1px solid #000; 
+    overflow: hidden; 
+  }
+
 
 /* Class */
 .nicebox1 
